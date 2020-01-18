@@ -19,10 +19,12 @@ function start() {
       inputStream: {
         name: "Live",
         type: "LiveStream",
+
         target: document.querySelector("#camera") // Or '#yourElement' (optional)
       },
       decoder: {
-        readers: ["ean_reader"]
+        readers: ["upc_reader"]
+
         /* reader options:
             "code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader",
             "code_39_vin_reader", "codabar_reader", "upc_reader", "upc_e_reader", "i2of5_reader",
@@ -40,10 +42,31 @@ function start() {
     }
   );
 
-  Quagga.onDetected(function(data) {
+
+var result = document.getElementById("result");
+var barList = ["60383885830", "055653686002", "1410023024", "60410025604", "73141550017"];
+
+
+Quagga.onDetected(function (data) {
     console.log(data.codeResult.code);
-    document.querySelector("#result").innerText = data.codeResult.code;
-    var barcode = data.codeResult.code;
-    //var barList = []
-  });
+    document.querySelector('#result').innerText = data.codeResult.code;
+    for(let i = 0; i < barList.length; i++){
+        if(data.codeResult.code == barList[i]){
+            result.textContent = data.codeResult.code;
+            isFound = true;
+            Quagga.stop();
+            break;
+        }
+    }
+
+});
+
+if(!isFound){
+    Quagga.start();
 }
+
+//Possible solution:
+/*
+    use Quagga.stop() at the beginning of the .onDetected() check whether the result is right or not
+    if yes just assign it to result.textContent if not call Quagga.stop() while isFound == false 
+*/
