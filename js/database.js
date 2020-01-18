@@ -14,7 +14,7 @@ var firebaseConfig = {
 //###################################################
 
 var scanButton = document.getElementById("scan");
-scanButton.addEventListener("click", openCamera);
+//scanButton.addEventListener("click", openCamera);
 
 var database = firebase.firestore();
 //var ref = database.collection("score");
