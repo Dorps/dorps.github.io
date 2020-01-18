@@ -2,40 +2,42 @@
 
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/style.css"> 
-        <title> UofT Hacks </title>
-        <!-- <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	  -->
-    </head>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title> UofT Hacks </title>
+    <!-- <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	  -->
+</head>
 
-    <body>
-        <button type="button">Scan Now</button>
+<body>
 
-        <div id="camera"></div>
+    <!--scan button-->
+    <center><input type="button" id="scan" onclick="start()" value="Scan Now"></input>
 
-        <div id="result">Result is: </div>
+        <h2 id="text">Barcode Number: <div id="result"></div>
 
-        <div id="itemfound"></div>
+            <p>
+                <div id="camera"></div>
+            </p>
+            <div id="itemfound"></div>
 
-        <h2> See Current Items </h2>
+            <!--database list-->
 
-        <ul id="databaseResults">
-            
-        </ul>
+            See Current Items
+            <ul id="databaseResults"></ul>
+        </h2>
+    </center>
+</body>
 
-    </body>
+<!-- Script files -->
 
-    <!-- Script files -->
-    
-    <!-- Database scripts -->
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+<!-- Database scripts -->
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
 
-    
-    <!-- Camera Scripts -->
-    <script src="js/quagga.min.js"></script>
-    <script src="js/camera.js"></script>
-    <script src="js/database.js"></script>
+<!-- Camera Scripts -->
+<script src="js/quagga.min.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/database.js"></script>
 
 </html>
