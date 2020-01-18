@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css"> 
+        <title> UofT Hacks </title>
+        <!-- <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>	  -->
+    </head>
+
+    <body>
+        <h1> Scan Now </h1>
+        
+        <div id="camera"></div>
+
+        <div id="result">Result is: </div>
+
+        <h2> See Current Items </h2>
+
+        <ul id="databaseResults">
+            
+        </ul>
+
+    </body>
+
+    <!-- Script files -->
+    
+    <!-- Database scripts -->
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+    <script src="js/database.js"></script>
+    
+    <!-- Camera Scripts -->
+    <script src="js/quagga.min.js"></script>
+    <script src="js/camera3.js"></script>
+
+</html>
