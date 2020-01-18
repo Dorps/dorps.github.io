@@ -42,31 +42,34 @@ function start() {
     }
   );
 
+  var result = document.getElementById("result");
+  var barList = [
+    "60383885830",
+    "055653686002",
+    "1410023024",
+    "60410025604",
+    "73141550017"
+  ];
 
-var result = document.getElementById("result");
-var barList = ["60383885830", "055653686002", "1410023024", "60410025604", "73141550017"];
-
-
-Quagga.onDetected(function (data) {
+  Quagga.onDetected(function(data) {
     console.log(data.codeResult.code);
-    document.querySelector('#result').innerText = data.codeResult.code;
-    for(let i = 0; i < barList.length; i++){
-        if(data.codeResult.code == barList[i]){
-            result.textContent = data.codeResult.code;
-            isFound = true;
-            Quagga.stop();
-            break;
-        }
+    document.querySelector("#result").innerText = data.codeResult.code;
+    for (let i = 0; i < barList.length; i++) {
+      if (data.codeResult.code == barList[i]) {
+        result.textContent = data.codeResult.code;
+        isFound = true;
+        Quagga.stop();
+        break;
+      }
     }
+  });
 
-});
-
-if(!isFound){
+  if (!isFound) {
     Quagga.start();
-}
+  }
 
-//Possible solution:
-/*
+  //Possible solution:
+  /*
     use Quagga.stop() at the beginning of the .onDetected() check whether the result is right or not
     if yes just assign it to result.textContent if not call Quagga.stop() while isFound == false 
 */
