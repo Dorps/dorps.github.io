@@ -2,11 +2,14 @@
 function start() {
   //button toggle
   var x = document.getElementById("camera");
-  if (x.style.display === "none") {
+  var y = document.getElementById("text");
+  if (x.style.display === "none" && y.style.display === "none") {
     x.style.display = "block";
+    y.style.display = "block";
     document.getElementById("scan").value = "Turn Off Camera";
   } else {
     x.style.display = "none";
+    y.style.display = "none";
     document.getElementById("scan").value = "Scan Now";
   }
 

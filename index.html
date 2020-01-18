@@ -14,18 +14,19 @@
     <!--scan button-->
     <center><input type="button" id="scan" onclick="start()" value="Scan Now"></input>
 
-        <h2>Barcode Number: <div id="result"> </div>
+        <h2 id="text">Barcode Number: <div id="result"></div>
+
+            <p>
+                <div id="camera"></div>
+            </p>
+
+
+            <!--database list-->
+
+            See Current Items
+            <ul id="databaseResults"></ul>
         </h2>
-        <div id="camera"></div>
     </center>
-
-    <!--database list-->
-    <h2> See Current Items </h2>
-
-    <ul id="databaseResults">
-
-    </ul>
-
 </body>
 
 <!-- Script files -->
