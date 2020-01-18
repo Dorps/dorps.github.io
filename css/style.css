@@ -24,7 +24,9 @@ button{
   cursor: pointer;
   box-shadow: 0 9px #999;
 }
-
+button:focus{
+    background-color: black;
+}
 button:hover{
     background-color: #ff9f1c;
 }
