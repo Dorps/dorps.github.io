@@ -50,7 +50,8 @@ Quagga.onDetected(function (data) {
     console.log(data.codeResult.code);
     document.querySelector('#result').innerText = data.codeResult.code;
     for(let i = 0; i < barList.length; i++){
-        if(data.codeResult.code == barList[i]){
+        console.log("Boolean is: ", String(data.codeResult.code) == barList[i])
+        if(String(data.codeResult.code) == barList[i]){
             result.textContent = data.codeResult.code;
             Quagga.stop();
             break;
