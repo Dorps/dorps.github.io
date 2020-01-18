@@ -42,6 +42,14 @@ function start() {
     }
   );
 
+  var result = document.getElementById("result");
+  var barList = [
+    "60383885830",
+    "055653686002",
+    "1410023024",
+    "60410025604",
+    "73141550017"
+  ];
 
 var result = document.getElementById("result");
 var barList = ["60383885830", "055653686002", "1410023024", "60410025604", "73141550017"];
@@ -61,8 +69,8 @@ Quagga.onDetected(function (data) {
 });
 
 
-//Possible solution:
-/*
+  //Possible solution:
+  /*
     use Quagga.stop() at the beginning of the .onDetected() check whether the result is right or not
     if yes just assign it to result.textContent if not call Quagga.stop() while isFound == false 
 */
