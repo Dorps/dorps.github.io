@@ -52,7 +52,7 @@ function start() {
   ];
 
 var result = document.getElementById("result");
-var barList = ["60383885830", "055653686002", "1410023024", "60410025604", "73141550017"];
+var barList = ["060383885830", "055653686002", "01410023024", "060410025604", "073141550017"];
 
 Quagga.onDetected(function (data) {
     console.log(data.codeResult.code);
