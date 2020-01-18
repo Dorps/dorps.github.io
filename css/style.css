@@ -1,14 +1,17 @@
+body {
+  background-color: bisque;
+}
 h1 {
-    font-size: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  font-size: 60px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-h2{
-      font-size: 30px;
-      font-family: Arial, Helvetica, sans-serif;
-  }
+h2 {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-input{
+input {
   background-color: #2ec4b6;
   border: none;
   color: white;
@@ -20,12 +23,12 @@ input{
   box-shadow: 0 9px #999;
 }
 
-input:hover{
-    background-color: #ff9f1c;
+input:hover {
+  background-color: #ff9f1c;
 }
 
 input:active {
-    background-color: #ff9f1c;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+  background-color: #ff9f1c;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
