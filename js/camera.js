@@ -26,6 +26,9 @@ Quagga.init({
 Quagga.onDetected(function (data) {
     console.log(data.codeResult.code);
     document.querySelector('#result').innerText = data.codeResult.code;
-    var barcode = data.codeResult.code;
+    window.barcode = function (){
+        return data.codeResult.code
+    };
+    //export {barcode};
     //var barList = []
 });

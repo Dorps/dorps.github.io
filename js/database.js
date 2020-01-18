@@ -1,3 +1,5 @@
+//import {barcode} from './camera.js'
+
 //Pre-written code by firebase
 //################################################
 var firebaseConfig = {
@@ -26,6 +28,10 @@ var database = firebase.firestore();
 
 //retrive data
 var results = document.getElementById("databaseResults");
+var res = document.getElementById("result");
+var found = document.getElementById("itemfound");
+
+found.textContent = "Not found";
 
 function renderScore(doc){
     let li = document.createElement('li');
@@ -36,6 +42,27 @@ function renderScore(doc){
     results.appendChild(li);
     //console.log("Name is", name.textContent, "Score is", score.textContent);
 }
+
+var currentItems = [];
+
+function compare(doc){
+    var isFound = false;
+    if(res.textContent == String(doc.barcodeId)){
+        Quagga.stop();
+        currentItems.append(doc);
+        isFound = true;
+        found.textContent = isFound;
+    }
+    console.log(currentItems);
+} 
+
+var docRef = database.collection("items");
+docRef.get().then(function(querySnapshots){
+    querySnapshots.forEach(doc => {
+        console.log(doc.id, " => ", doc.data());
+        compare(doc.data());
+    })
+});
 
 var docRef = database.collection("items");
 docRef.get().then(function(querySnapshot){
