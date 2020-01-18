@@ -8,7 +8,7 @@ h2{
       font-family: Arial, Helvetica, sans-serif;
   }
 
-button{
+input{
   background-color: #2ec4b6;
   border: none;
   color: white;
@@ -19,14 +19,12 @@ button{
   cursor: pointer;
   box-shadow: 0 9px #999;
 }
-button:focus{
-    background-color: #e71d36;
-}
-button:hover{
+
+input:hover{
     background-color: #ff9f1c;
 }
 
-button:active {
+input:active {
     background-color: #ff9f1c;
     box-shadow: 0 5px #666;
     transform: translateY(4px);

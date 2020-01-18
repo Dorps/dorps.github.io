@@ -1,15 +1,17 @@
 //import database.js;
 function start(){
-    // var x = document.getElementById('camera');
-    // if(x.style.display === "none"){
-    //     x.style.display = "block";
-    // }else{
-    //     x.style.display = "none";
-    // }
-    // var isclicked = false;
-    // if(isclicked == true){
-        
-    // }
+    
+    //button toggle
+    var x = document.getElementById('camera');
+    if(x.style.display === "none"){
+        x.style.display = "block";
+        document.getElementById("scan").value="Turn Off Camera";
+    }else{
+        x.style.display = "none";
+        document.getElementById("scan").value="Scan Now";
+    }
+
+    //start of camera code
     Quagga.init({
         inputStream: {
             name: "Live",
