@@ -74,7 +74,9 @@ Quagga.onDetected(function (data) {
     use Quagga.stop() at the beginning of the .onDetected() check whether the result is right or not
     if yes just assign it to result.textContent if not call Quagga.stop() while isFound == false 
 */
+
 }
+
 //import {barcode} from './camera.js'
 
 //Pre-written code by firebase
