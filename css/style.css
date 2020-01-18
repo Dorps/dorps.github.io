@@ -1,19 +1,18 @@
+body {
+  background-color: rgb(255, 233, 215);
+}
 h1 {
-    font-size: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-h2{
-      font-size: 40px;
-      font-family: Arial, Helvetica, sans-serif;
-  }
-
-#result{
-    font-size: 40px;
-    font-family: Arial, Helvetica, sans-serif;
+  font-size: 60px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-button{
+h2 {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: none;
+}
+
+input {
   background-color: #2ec4b6;
   border: none;
   color: white;
@@ -25,12 +24,12 @@ button{
   box-shadow: 0 9px #999;
 }
 
-button:hover{
-    background-color: #ff9f1c;
+input:hover {
+  background-color: #fc4848;
 }
 
-button:active {
-    background-color: #ff9f1c;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+input:active {
+  background-color: #fc4848;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

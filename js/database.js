@@ -3,17 +3,20 @@
 //Pre-written code by firebase
 //################################################
 var firebaseConfig = {
-    apiKey: "AIzaSyD49vcZv3vN6EfKbbIGMBmW0iQIMbuGsZk",
-    authDomain: "uhack7.firebaseapp.com",
-    databaseURL: "https://uhack7.firebaseio.com",
-    projectId: "uhack7",
-    storageBucket: "uhack7.appspot.com",
-    messagingSenderId: "532338834871",
-    appId: "1:532338834871:web:81e16defcce9ca1ed37c32"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  apiKey: "AIzaSyD49vcZv3vN6EfKbbIGMBmW0iQIMbuGsZk",
+  authDomain: "uhack7.firebaseapp.com",
+  databaseURL: "https://uhack7.firebaseio.com",
+  projectId: "uhack7",
+  storageBucket: "uhack7.appspot.com",
+  messagingSenderId: "532338834871",
+  appId: "1:532338834871:web:81e16defcce9ca1ed37c32"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 //###################################################
+
+var scanButton = document.getElementById("scan");
+//scanButton.addEventListener("click", openCamera);
 
 var database = firebase.firestore();
 //var ref = database.collection("score");
@@ -25,21 +28,26 @@ var database = firebase.firestore();
 
 // ref.add(data);
 
-
 //retrive data
 var results = document.getElementById("databaseResults");
 var res = document.getElementById("result");
 var found = document.getElementById("itemfound");
 
 
-function renderScore(doc){
-    let li = document.createElement('li');
-    
-    li.setAttribute('data-id', doc.id);
-    li.textContent = "Barcode: " + doc.barcodeId + " Product name: " + doc.name + " Expiry Date: " + doc.expiryDate
+function renderScore(doc) {
+  let li = document.createElement("li");
 
-    results.appendChild(li);
-    //console.log("Name is", name.textContent, "Score is", score.textContent);
+  li.setAttribute("data-id", doc.id);
+  li.textContent =
+    "Barcode: " +
+    doc.barcodeId +
+    " Product name: " +
+    doc.name +
+    " Expiry Date: " +
+    doc.expiryDate;
+
+  results.appendChild(li);
+  //console.log("Name is", name.textContent, "Score is", score.textContent);
 }
 
 var currentItems = [];
@@ -65,11 +73,11 @@ docRef.get().then(function(querySnapshots){
 });
 
 var docRef = database.collection("items");
-docRef.get().then(function(querySnapshot){
-    querySnapshot.forEach(doc => {
-        console.log(doc.id, " => ", doc.data());
-        renderScore(doc.data());
-    })
+docRef.get().then(function(querySnapshot) {
+  querySnapshot.forEach(doc => {
+    console.log(doc.id, " => ", doc.data());
+    renderScore(doc.data());
+  });
 });
 
 // database.collection("score").get().then((onSnapshot) => {
