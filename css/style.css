@@ -3,7 +3,7 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
   }
 
-  h2{
+h2{
       font-size: 40px;
       font-family: Arial, Helvetica, sans-serif;
   }
@@ -12,3 +12,25 @@ h1 {
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+button{
+  background-color: #2ec4b6;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-size: 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 9px #999;
+}
+
+button:hover{
+    background-color: #ff9f1c;
+}
+
+button:active {
+    background-color: #ff9f1c;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
