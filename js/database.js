@@ -31,7 +31,6 @@ var results = document.getElementById("databaseResults");
 var res = document.getElementById("result");
 var found = document.getElementById("itemfound");
 
-found.textContent = "Not found";
 
 function renderScore(doc){
     let li = document.createElement('li');
@@ -44,6 +43,7 @@ function renderScore(doc){
 }
 
 var currentItems = [];
+console.log("Barcode is: ", res.textContent);
 
 function compare(doc){
     var isFound = false;
