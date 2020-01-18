@@ -6,11 +6,11 @@ function start() {
   if (x.style.display === "none" && y.style.display === "none") {
     x.style.display = "block";
     y.style.display = "block";
-    document.getElementById("scan").value = "Turn Off Camera";
+    document.getElementById("scan").value = "Scan Again";
   } else {
     x.style.display = "none";
     y.style.display = "none";
-    document.getElementById("scan").value = "Scan Now";
+    document.getElementById("scan").value = "Scan Product";
   }
 
   //start of camera code
