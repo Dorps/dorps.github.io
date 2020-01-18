@@ -1,5 +1,15 @@
 //import database.js;
 function start(){
+    // var x = document.getElementById('camera');
+    // if(x.style.display === "none"){
+    //     x.style.display = "block";
+    // }else{
+    //     x.style.display = "none";
+    // }
+    // var isclicked = false;
+    // if(isclicked == true){
+        
+    // }
     Quagga.init({
         inputStream: {
             name: "Live",
@@ -30,6 +40,4 @@ function start(){
         //var barList = []
     });
 
-    var cam = document.getElementById('camera');
-    cam.addEventListener("click", start);
 }
