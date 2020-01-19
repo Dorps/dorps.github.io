@@ -12,14 +12,16 @@
 <body>
 
     <!--scan button-->
-    <center><input type="button" id="scan" onclick="start()" value="Scan Product"></input>
+    <center>
+    <input type="button" id="scan" onclick="start()" value="Scan Product"></input>
 
         <h2 id="text">Barcode Number: <div id="result"></div>
 
+            <div id="itemfound"></div>
             <p>
                 <div id="camera"></div>
             </p>
-            <div id="itemfound"></div>
+
 
             <!--database list-->
 
@@ -28,10 +30,10 @@
         </h2>
     </center>
 
-    <div>Teachable Machine Image Model</div>
+    <!-- <div>Teachable Machine Image Model</div>
     <button type="button" onclick="init()">Start</button>
     <div id="webcam-container"></div>
-    <div id="label-container"></div>
+    <div id="label-container"></div> -->
 
 </body>
 
@@ -44,9 +46,9 @@
 <!-- Camera Scripts -->
 <script src="js/quagga.min.js"></script>
 <script src="js/camera.js"></script>
-<script src="js/database.js"></script>
+<!-- <script src="js/database.js"></script> -->
 
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-<script type="text/javascript" src="=js/ai.js"></script>
+<script type="text/javascript" src="=js/ai.js"></script> -->
 </html>
