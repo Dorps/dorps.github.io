@@ -116,6 +116,28 @@ var pocky = database.collection("items").doc("pocky");
 
 console.log("Barcode is: ", barcode);
 
+switch(barcode){
+    case ("055653686002"):
+        console.log("Breton");
+        found.textContent = "Item is: Breton";
+        Quagga.stop();
+        currentItems.append(doc);
+        isFound = true;
+        found.textContent = isFound;
+    }
+    console.log(currentItems);
+} 
+
+var docRef = database.collection("items");
+docRef.get().then(function(querySnapshots){
+    querySnapshots.forEach(doc => {
+
+        console.log(doc.id, " => ", doc.data());
+        compare(doc.data());
+    })
+});
+
+
 
     // database.collection("items").where("barcodeId", "==", barcode).get()
     // .then(function(querySnapshot){
