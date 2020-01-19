@@ -115,6 +115,7 @@ var goldfish = database.collection("items").doc("goldfish");
 var pocky = database.collection("items").doc("pocky");
 
 console.log("Barcode is: ", barcode);
+
 switch(barcode){
     case ("055653686002"):
         console.log("Breton");
@@ -136,33 +137,54 @@ docRef.get().then(function(querySnapshots){
     })
 });
 
-var docRef = database.collection("items");
-docRef.get().then(function(querySnapshot) {
-  querySnapshot.forEach(doc => {
-    console.log(doc.id, " => ", doc.data());
-    renderScore(doc.data());
-  });
-});
 
-database.collection("items").where("barcodeId", "==", 55653686002)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-            console.log("name is", doc.data().name);
-        });
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-//function itemfind(barcode){
- //   var docItems = database.collections("items")
-//}
-// database.collection("score").get().then((onSnapshot) => {
-//     onSnapshot.docs.forEach(doc => {
-//         renderScore(doc);
-//         //console.log(doc);
+
+    // database.collection("items").where("barcodeId", "==", barcode).get()
+    // .then(function(querySnapshot){
+    //     querySnapshot.forEach(function(doc){
+    //         console.log(doc.id, " => ", doc.data());
+    //         console.log("Name is: ", doc.data().name);
+    //         found.textContent = "Item is: ", doc.data().name;
+    //         Quagga.stop();
+    //     });
+    // }).catch(function(error){
+    //     console.log("Error getting documents: ", error);
+    // });
+
+
+switch(barcode){
+    case ("055653686002"):
+        console.log("Breton");
+        found.textContent = "Item is: Breton";
+        Quagga.stop();
+        break;
+    case ("060410025604"):
+        console.log("Lays");
+        found.textContent = "Item is: Lays";
+        Quagga.stop();
+        break;
+    case ("060383885830"):
+        console.log("Baby Carrot");
+        found.textContent = "Item is: Baby Carrot";
+        Quagga.stop();
+        break;
+    case ("014100230243"):
+        console.log("Gold Fish");
+        found.textContent = "Item is: Gold Fish";
+        Quagga.stop();
+        break;
+    case ("073141550017"):
+        console.log("Pocky");
+        found.textContent = "Item is: Pocky";
+        Quagga.stop();
+        break;
+}
+
+// var docRef = database.collection("items");
+// docRef.get().then(function(querySnapshots){
+//     querySnapshots.forEach(doc => {
+//         console.log(doc.id, " => ", doc.data());
+//         compare(doc.data());
 //     })
 // });
 
