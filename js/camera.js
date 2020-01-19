@@ -146,6 +146,7 @@ function compare(doc){
 var docRef = database.collection("items");
 docRef.get().then(function(querySnapshots){
     querySnapshots.forEach(doc => {
+
         console.log(doc.id, " => ", doc.data());
         compare(doc.data());
     })
@@ -159,6 +160,21 @@ docRef.get().then(function(querySnapshot) {
   });
 });
 
+database.collection("items").where("barcodeId", "==", 55653686002)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            console.log("name is", doc.data().name);
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+//function itemfind(barcode){
+ //   var docItems = database.collections("items")
+//}
 // database.collection("score").get().then((onSnapshot) => {
 //     onSnapshot.docs.forEach(doc => {
 //         renderScore(doc);
