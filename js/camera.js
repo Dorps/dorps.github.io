@@ -115,6 +115,21 @@ var goldfish = database.collection("items").doc("goldfish");
 var pocky = database.collection("items").doc("pocky");
 
 console.log("Barcode is: ", barcode);
+
+
+    // database.collection("items").where("barcodeId", "==", barcode).get()
+    // .then(function(querySnapshot){
+    //     querySnapshot.forEach(function(doc){
+    //         console.log(doc.id, " => ", doc.data());
+    //         console.log("Name is: ", doc.data().name);
+    //         found.textContent = "Item is: ", doc.data().name;
+    //         Quagga.stop();
+    //     });
+    // }).catch(function(error){
+    //     console.log("Error getting documents: ", error);
+    // });
+
+
 switch(barcode){
     case ("055653686002"):
         console.log("Breton");
