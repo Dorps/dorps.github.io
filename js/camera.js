@@ -1,4 +1,5 @@
-//import database.js;
+let barcode = "";
+let currentItems = [];
 function start() {
   //button toggle
   var x = document.getElementById("camera");
@@ -20,7 +21,7 @@ function start() {
         name: "Live",
         type: "LiveStream",
 
-        target: document.querySelector("#camera") // Or '#yourElement' (optional)
+        target: document.querySelector("#camera")
       },
       decoder: {
         readers: ["upc_reader"]
@@ -42,17 +43,9 @@ function start() {
     }
   );
 
-  var result = document.getElementById("result");
-  var barList = [
-    "60383885830",
-    "055653686002",
-    "1410023024",
-    "60410025604",
-    "73141550017"
-  ];
-
 var result = document.getElementById("result");
 var barList = ["060383885830", "055653686002", "014100230243", "060410025604", "073141550017"];
+
 
 Quagga.onDetected(function (data) {
     console.log(data.codeResult.code);
@@ -61,63 +54,49 @@ Quagga.onDetected(function (data) {
         console.log("Boolean is: ", String(data.codeResult.code) == barList[i])
         if(String(data.codeResult.code) == barList[i]){
             result.textContent = data.codeResult.code;
-            Quagga.stop();
+            barcode = data.codeResult.code;
+            database();
             break;
         }
     }
 
 });
 
-
-  //Possible solution:
-  /*
-    use Quagga.stop() at the beginning of the .onDetected() check whether the result is right or not
-    if yes just assign it to result.textContent if not call Quagga.stop() while isFound == false 
-*/
-
 }
 
-//import {barcode} from './camera.js'
+//########## End of Start() ######################
 
-//Pre-written code by firebase
+//Configure Firebase
 //################################################
 var firebaseConfig = {
-  apiKey: "AIzaSyD49vcZv3vN6EfKbbIGMBmW0iQIMbuGsZk",
-  authDomain: "uhack7.firebaseapp.com",
-  databaseURL: "https://uhack7.firebaseio.com",
-  projectId: "uhack7",
-  storageBucket: "uhack7.appspot.com",
-  messagingSenderId: "532338834871",
-  appId: "1:532338834871:web:81e16defcce9ca1ed37c32"
+apiKey: "AIzaSyD49vcZv3vN6EfKbbIGMBmW0iQIMbuGsZk",
+authDomain: "uhack7.firebaseapp.com",
+databaseURL: "https://uhack7.firebaseio.com",
+projectId: "uhack7",
+storageBucket: "uhack7.appspot.com",
+messagingSenderId: "532338834871",
+appId: "1:532338834871:web:81e16defcce9ca1ed37c32"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 //###################################################
-
+function database(){
 var scanButton = document.getElementById("scan");
 //scanButton.addEventListener("click", openCamera);
 
 var database = firebase.firestore();
 //var ref = database.collection("score");
 
-// var data = {
-//     name: "testPerson1",
-//     score: 50
-// }
-
-// ref.add(data);
-
 //retrive data
 var results = document.getElementById("databaseResults");
 var res = document.getElementById("result");
 var found = document.getElementById("itemfound");
 
-
 function renderScore(doc) {
-  let li = document.createElement("li");
+let li = document.createElement("li");
 
-  li.setAttribute("data-id", doc.id);
-  li.textContent =
+li.setAttribute("data-id", doc.id);
+li.textContent =
     "Barcode: " +
     doc.barcodeId +
     " Product name: " +
@@ -125,16 +104,21 @@ function renderScore(doc) {
     " Expiry Date: " +
     doc.expiryDate;
 
-  results.appendChild(li);
-  //console.log("Name is", name.textContent, "Score is", score.textContent);
+results.appendChild(li);
+//console.log("Name is", name.textContent, "Score is", score.textContent);
 }
 
-var currentItems = [];
-console.log("Barcode is: ", res.textContent);
+var breton = database.collection("items").doc("breton");
+var lays = database.collection("items").doc("lays");
+var babyCarrot = database.collection("items").doc("babyCarrot");
+var goldfish = database.collection("items").doc("goldfish");
+var pocky = database.collection("items").doc("pocky");
 
-function compare(doc){
-    var isFound = false;
-    if(res.textContent == String(doc.barcodeId)){
+console.log("Barcode is: ", barcode);
+switch(barcode){
+    case ("055653686002"):
+        console.log("Breton");
+        found.textContent = "Item is: Breton";
         Quagga.stop();
         currentItems.append(doc);
         isFound = true;
@@ -181,3 +165,26 @@ database.collection("items").where("barcodeId", "==", 55653686002)
 //         //console.log(doc);
 //     })
 // });
+
+// console.log("Real barcode is: ", barcode);
+// //console.log("Barcode is: ", res.textContent);
+// function compare(doc){
+//     //var isFound = false;
+//     if(barcode == String(doc.barcodeId)){
+//         found.textContent = doc.name;
+//         console.log("Doc name is: ", doc.name);
+//         //isFound = true;
+//         //found.textContent = isFound;
+//     }
+// } 
+
+//########## DONT DELETE ##################
+// var docRef = database.collection("items");
+// docRef.get().then(function(querySnapshot) {
+//   querySnapshot.forEach(doc => {
+//     console.log(doc.id, " => ", doc.data());
+//     renderScore(doc.data());
+//   });
+// });
+
+}
