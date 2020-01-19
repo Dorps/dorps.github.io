@@ -55,7 +55,8 @@ Quagga.onDetected(function (data) {
         if(String(data.codeResult.code) == barList[i]){
             result.textContent = data.codeResult.code;
             barcode = data.codeResult.code;
-            database();
+            console.log(barcode);
+            database(String(barcode));
             break;
         }
     }
@@ -80,17 +81,33 @@ appId: "1:532338834871:web:81e16defcce9ca1ed37c32"
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 //###################################################
-function database(){
+function database(barcode){
     var scanButton = document.getElementById("scan");
     //scanButton.addEventListener("click", openCamera);
 
     var database = firebase.firestore();
     //var ref = database.collection("score");
-
-    //retrive data
     var results = document.getElementById("databaseResults");
     var res = document.getElementById("result");
     var found = document.getElementById("itemfound");
+    
+    database.collection("items").where("barcodeId", "==", barcode)
+    .get()
+    .then(function(querySnapshot){
+        querySnapshot.forEach(function(doc){
+            
+            console.log("Name is: ", doc.data().name);
+            found.textContent = "Item is: " + doc.data().name + " and it will expire in " + String(doc.data().expiryDate) + " days!";
+            console.log(found.textContent);
+            Quagga.stop();
+        //         found.textContent = "Item is: ", doc.data().name;
+        //         Quagga.stop();
+        });
+    }).catch(function(error){
+        console.log("Error getting documents: ", error);
+    });
+    //retrive data
+
 
     // function renderScore(doc) {
     // let li = document.createElement("li");
@@ -110,63 +127,53 @@ function database(){
 
     var breton = database.collection("items").doc("breton");
     var lays = database.collection("items").doc("lays");
-    var babyCarrot = database.collection("items").doc("babyCarrot");
+    //var babyCarrot = database.collection("items").doc("babyCarrot");
     var goldfish = database.collection("items").doc("goldfish");
     var pocky = database.collection("items").doc("pocky");
 
     console.log("Barcode is: ", barcode);
 
 
-        // database.collection("items").where("barcodeId", "==", barcode).get()
-        // .then(function(querySnapshot){
-        //     querySnapshot.forEach(function(doc){
-        //         console.log(doc.id, " => ", doc.data());
-        //         console.log("Name is: ", doc.data().name);
-        //         found.textContent = "Item is: ", doc.data().name;
-        //         Quagga.stop();
-        //     });
-        // }).catch(function(error){
-        //     console.log("Error getting documents: ", error);
-        // });
 
 
-    switch(barcode){
-        case ("055653686002"):
-            console.log("Breton");
-            found.textContent = "Item is: Breton and it will expire in 23 days!";
-            Quagga.stop();
-            break;
-        case ("014100230243"):
-            console.log("Gold Fish");
-            found.textContent = "Item is: Gold Fish and it will expire in 12 days!";
-            Quagga.stop();
-            break;
-        case ("060383885830"):
-            console.log("Baby Carrot");
-            found.textContent = "Item is: Baby Carrot and it will expire in 2 days!";
-            Quagga.stop();
-            break;
-        case("073141550017"):
-            console.log("Pocky");
-            found.textContent = "Item is: Pocky and it will expire in 73 days!";
-            Quagga.stop();
-            break;
-        case("060410025604"):
-            console.log("Lays");
-            found.textContent = "Item is: Lays and it will expire in 5 days!";
-            Quagga.stop();
-            break;
-        }
+
+    // switch(barcode){
+    //     case ("055653686002"):
+    //         console.log("Breton");
+    //         found.textContent = "Item is: Breton";
+    //         Quagga.stop();
+    //         break;
+    //     case ("014100230243"):
+    //         console.log("Gold Fish");
+    //         found.textContent = "Item is: Gold Fish";
+    //         Quagga.stop();
+    //         break;
+    //     case ("060383885830"):
+    //         console.log("Baby Carrot");
+    //         found.textContent = "Item is: Baby Carrot";
+    //         Quagga.stop();
+    //         break;
+    //     case("073141550017"):
+    //         console.log("Pocky");
+    //         found.textContent = "Item is: Pocky";
+    //         Quagga.stop();
+    //         break;
+    //     case("060410025604"):
+    //         console.log("Lays");
+    //         found.textContent = "Item is: Lays";
+    //         Quagga.stop();
+    //         break;
+    //     }
 
 
-    var docRef = database.collection("items");
-    docRef.get().then(function(querySnapshots){
-        querySnapshots.forEach(doc => {
+    // var docRef = database.collection("items");
+    // docRef.get().then(function(querySnapshots){
+    //     querySnapshots.forEach(doc => {
 
-            console.log(doc.id, " => ", doc.data());
-            compare(doc.data());
-        })
-    });
+    //         console.log(doc.id, " => ", doc.data());
+    //         compare(doc.data());
+    //     })
+    // });
 
     // var docRef = database.collection("items");
     // docRef.get().then(function(querySnapshot) {
