@@ -33,3 +33,16 @@ input:active {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.showResults{
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.dataBaseResults{
+  padding: 5%;
+}
+
+.dataBaseResults li{
+  padding: 5%;
+}
