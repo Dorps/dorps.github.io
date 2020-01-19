@@ -133,27 +133,27 @@ function database(){
     switch(barcode){
         case ("055653686002"):
             console.log("Breton");
-            found.textContent = "Item is: Breton";
+            found.textContent = "Item is: Breton and it will expire in 23 days!";
             Quagga.stop();
             break;
         case ("014100230243"):
             console.log("Gold Fish");
-            found.textContent = "Item is: Gold Fish";
+            found.textContent = "Item is: Gold Fish and it will expire in 12 days!";
             Quagga.stop();
             break;
         case ("060383885830"):
             console.log("Baby Carrot");
-            found.textContent = "Item is: Baby Carrot";
+            found.textContent = "Item is: Baby Carrot and it will expire in 2 days!";
             Quagga.stop();
             break;
         case("073141550017"):
             console.log("Pocky");
-            found.textContent = "Item is: Pocky";
+            found.textContent = "Item is: Pocky and it will expire in 73 days!";
             Quagga.stop();
             break;
         case("060410025604"):
             console.log("Lays");
-            found.textContent = "Item is: Lays";
+            found.textContent = "Item is: Lays and it will expire in 5 days!";
             Quagga.stop();
             break;
         }
